@@ -58,12 +58,12 @@ export const POST = withApiAuthRequiredExtended(
 
       const titleResponse = _generateTitle.choices[0]?.message.content;
 
-      const _generatedPost = await openai.chat.completions.create({
+      const _generatePost = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
-            content: "You are a blog writter.",
+            content: "You are a blog post writter.",
           },
           {
             role: "user",
@@ -73,7 +73,7 @@ export const POST = withApiAuthRequiredExtended(
         temperature: 0.2,
       });
 
-      const postResponse = _generatedPost.choices[0]?.message?.content;
+      const postResponse = _generatePost.choices[0]?.message?.content;
 
       const _paragraphs = postResponse?.split("\n\n");
 
