@@ -37,7 +37,7 @@ export const POST = withApiAuthRequiredExtended(
         apiKey: process.env.OPEN_API_KEY,
       });
 
-      const _generatedTitle = await openai.chat.completions.create({
+      const _generateTitle = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           {
@@ -46,7 +46,7 @@ export const POST = withApiAuthRequiredExtended(
           },
           {
             role: "user",
-            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follow: ${keywords}. The tone of the post are as follow: ${tone}. The title shoul be SEO friendly and no longer than 15 words. Write only one title. ${
+            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follows: ${keywords}. The tone of the post should be: ${tone}. The title shoul be SEO friendly and no longer than 15 words. Write only one title. ${
               title.length > 0
                 ? `Take that title into consideration: ${title}.`
                 : ""
@@ -56,7 +56,7 @@ export const POST = withApiAuthRequiredExtended(
         temperature: 0.2,
       });
 
-      const titleResponse = _generatedTitle.choices[0]?.message.content;
+      const titleResponse = _generateTitle.choices[0]?.message.content;
 
       const _generatedPost = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
