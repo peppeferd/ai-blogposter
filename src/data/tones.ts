@@ -1,23 +1,23 @@
 export const tones: Tone[] = [
   {
-    label: "Neutral",
+    label: "😑 Neutral",
     value: "neutral",
   },
   {
-    label: "Happy",
+    label: "😀 Happy",
     value: "happy, optimistic, positive,and cheerful",
   },
   {
-    label: "Sad",
+    label: "😞 Sad",
     value: "sad, pessimistic, negative, and gloomy",
   },
   {
-    label: "Angry",
+    label: "😡 Angry",
     value:
       "angry and annoyed, frustrated, or irritated, using strong language and exclamation marks",
   },
   {
-    label: "Formal",
+    label: "🧐 Formal",
     value:
       "formal, professional, and serious, using posh and formal language and no contractions",
   },
