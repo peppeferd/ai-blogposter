@@ -12,6 +12,7 @@ export default function Post({ post, handleDeletePost }: Props) {
   function handleDelete() {
     handleDeletePost(post._id);
   }
+console.log(post.title)
   return (
     <div className="w-full h-auto flex flex-col gap-4 shadow-sm p-4 rounded-xl bg-white">
       <h1 className="text-2xl px-4 font-bold text-center text-gray-800">
