@@ -11,14 +11,16 @@ import { refetchCreditsAtom } from "@/atoms/flagAtom";
 export default function Navbar() {
   const { user } = useUser();
   const [profile, setProfile] = useRecoilState(profileAtom);
-  const refetchCredits = useRecoilValue(refetchCreditsAtom);
+  const [refetchCredits, setRefetchCredits] =
+    useRecoilState(refetchCreditsAtom);
   React.useEffect(() => {
     async function fetchProfile() {
       const profile = await getProfile();
       setProfile(profile);
+      setRefetchCredits((prev) => !prev);
     }
     if (user) fetchProfile();
-  }, [setProfile, user, refetchCredits]);
+  }, [setProfile, user, setRefetchCredits]);
   return (
     <nav className="w-full bg-white shadow-md px-6 py-2 z-20 grid grid-cols-3">
       {user ? (
