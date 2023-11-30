@@ -37,7 +37,7 @@ export const POST = withApiAuthRequiredExtended(
         apiKey: process.env.OPEN_API_KEY,
       });
 
-      const _generateTitle = await openai.chat.completions.create({
+      const _generatedTitle = await openai.beta.chat.completions.stream({
         model: "gpt-3.5-turbo",
         messages: [
           {
@@ -46,7 +46,7 @@ export const POST = withApiAuthRequiredExtended(
           },
           {
             role: "user",
-            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follows: ${keywords}. The tone of the post should be: ${tone}. The title shoul be SEO friendly and no longer than 15 words. Write only one title. ${
+            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follows: ${keywords}. The tone of the post are as follow: ${tone}. The title shoul be SEO friendly and no longer than 15 words. Write only one title. ${
               title.length > 0
                 ? `Take that title into consideration: ${title}.`
                 : ""
@@ -55,25 +55,26 @@ export const POST = withApiAuthRequiredExtended(
         ],
         temperature: 0.2,
       });
+      const chatCompletion2 = await _generatedTitle.finalChatCompletion();
 
-      const titleResponse = _generateTitle.choices[0]?.message.content;
+      const titleResponse = chatCompletion2.choices[0]?.message.content;
 
-      const _generatePost = await openai.chat.completions.create({
+      const _generatedPost = await openai.beta.chat.completions.stream({
         model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
-            content: "You are a blog post writter.",
+            content: "You are a blog writter.",
           },
-          {
+          { 
             role: "user",
-            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post, just start writing the post. Divide the post into paragraphs and write at least 3 paragraphs. Distinguish the paragraphs with a line break.`,
+            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post. Divide the post into paragraphs and write more than a paragraphs. Distinguish the paragraphs with a line break.`,
           },
         ],
         temperature: 0.2,
       });
-
-      const postResponse = _generatePost.choices[0]?.message?.content;
+      const chatCompletion = await _generatedPost.finalChatCompletion();
+      const postResponse = chatCompletion.choices[0]?.message?.content;
 
       const _paragraphs = postResponse?.split("\n\n");
 
