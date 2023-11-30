@@ -45,15 +45,14 @@ export const POST = withApiAuthRequiredExtended(
           },
           {
             role: "user",
-            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follow: ${keywords}. The tone of the post are as follow: ${tone}. The title shoul be SEO friendly and no longer than 15 words. Write only one title. ${
+            content: `Write me a title for a blog post about ${description}. The keywords for the post are as follows: ${keywords}. The tone of the post are as follows: ${tone}. The title should be SEO friendly and no longer than 15 words. Write only one title. ${
               title.length > 0
                 ? `Take that title into consideration: ${title}.`
                 : ""
-            }. Do not wrap the title in quotes.`,
+            }. Write the title as it is, without quotes or braces`,
           },
         ],
         model: "gpt-3.5-turbo-1106",
-        response_format: { type: "json_object" },
       });
 
       const titleResponse = _generatedTitle.choices[0]?.message.content;
@@ -67,7 +66,7 @@ export const POST = withApiAuthRequiredExtended(
           },
           {
             role: "user",
-            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post, just start writing the post. Divide the post into paragraphs and write at least 3 paragraphs. Distinguish the paragraphs with a line break.`,
+            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post, just start writing the post. Divide the post into paragraphs and write at least 4 paragraphs. Distinguish the paragraphs with a line break.`,
           },
         ],
         temperature: 0.2,

@@ -63,10 +63,8 @@ export default withPageAuthRequired(function Page() {
         console.log(err);
       });
   }
-  if (post) {
-    const iltitolo = post.title;
-    iltitolo.substring(1, iltitolo.length - 1);
-  }
+  
+  console.log(post)
   return (
     <section className="w-full flex flex-col items-center">
       <section className="w-[95%] max-w-4xl">
@@ -181,7 +179,7 @@ export default withPageAuthRequired(function Page() {
         {success && post && (
           <div className="w-full flex flex-col gap-4 mt-4 mb-16">
             <h1 className="text-4xl font-bold text-gray-800 text-center">
-              {post.title.slice(1,-1)}
+              {post.title}
             </h1>
 
             {typeof post.content === "string" ? (
