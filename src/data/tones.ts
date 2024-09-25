@@ -21,4 +21,28 @@ export const tones: Tone[] = [
     value:
       'formal, professional, and serious, using posh and formal language and no contractions',
   },
+  {
+    label: 'Smiling 😊️',
+    value:
+      'happy, nice, and confident, using a simple language and exclamation marks',
+  },
+  {
+    label: 'Lovely ❤️',
+    value: 'cute, romantic, passionate',
+  },
+  {
+    label: 'Narrative 🤓️',
+    value:
+      'passionate, amused, using a narrative language and telling events really happened or not',
+  },
+  {
+    label: 'Amused 🥳️',
+    value:
+      'happy, joyed, but calm, using some capital letters to emphasize the post and exclamation marks',
+  },
+  {
+    label: 'Caring 😇️',
+    value:
+      'affectionate, calm, using an informal language and emphasizing the post',
+  },
 ]
