@@ -67,7 +67,7 @@ export const POST = withApiAuthRequiredExtended(
           },
           {
             role: 'user',
-            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post, just start writing the post. Divide the post into paragraphs and write at least 6 paragraphs. Distinguish the paragraphs with a line break.`,
+            content: `Write me a long and interesting blog post about ${description}. The title of the article is as follows: ${titleResponse}. These are the keywords for the post: ${keywords}. The blog post should be long and SEO friendly. The tone of the post should be ${tone}. Write it as well as you can. Do not include the title in the post, just start writing the post. Divide the post into paragraphs and write at least 8 paragraphs. Distinguish the paragraphs with a line break.`,
           },
         ],
         temperature: 0.2,
