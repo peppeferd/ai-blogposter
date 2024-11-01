@@ -12,7 +12,7 @@ export const tones: Tone[] = [
     value: 'sad, pessimistic, negative, and gloomy',
   },
   {
-    label: 'Angry 😡',
+    label: 'Angry 😤',
     value:
       'angry and annoyed, frustrated, or irritated, using strong language and exclamation marks',
   },
@@ -49,6 +49,10 @@ export const tones: Tone[] = [
     label: 'Laughing 🤣️',
     value:
       'formal, professional, and serious, using posh and formal language and no contractions',
+  },
+  {
+    label: 'Cruel 😡',
+    value: 'cruent, angry, using a language hard in the words and also vulgar',
   },
   {
     label: 'Interested 🥸',
