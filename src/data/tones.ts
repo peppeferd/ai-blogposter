@@ -60,7 +60,7 @@ export const tones: Tone[] = [
       "formal, professional, and serious, using posh and formal language and no contractions",
   },
   {
-    label: "Annoyed 🥸",
+    label: "Annoyed 🫥",
     value: "formal, serious, and annoyed",
   },
 ];
